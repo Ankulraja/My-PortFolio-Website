@@ -329,7 +329,7 @@ span {
     width: 375px;
     height: 400px;
     display: flex;
-    
+    border-radius: 20px;
   }
   .userImage img {
     border:10px solid red;
