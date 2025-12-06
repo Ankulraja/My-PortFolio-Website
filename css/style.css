@@ -415,28 +415,30 @@ span {
 }
 
 .services .services-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    /* use grid so items in a row have equal heights */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
+    align-items: stretch;
 }
 
 .services-container .services-box {
-    flex: 1 1 30rem;
     background: var(--bg-color);
-    padding: 3rem 2rem 4rem;
+    padding: 2.4rem 1.8rem;
     border-radius: 2rem;
     box-shadow: 0 .1rem .5rem var(--shadow-color);
     text-align: center;
     border-top: .6rem solid var(--main-color);
     border-bottom: .6rem solid var(--main-color);
-    transition: .5s ease;
+    transition: .35s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .services-container .services-box:hover {
-    box-shadow: 0 .1rem 2rem var(--shadow-color);
-    transform: scale(1.02);
+    box-shadow: 0 .3rem 1.6rem var(--shadow-color);
+    transform: translateY(-6px);
 }
 
 .services-box i {
@@ -445,8 +447,8 @@ span {
 }
 
 .services-box h3 {
-    font-size: 2.6rem;
-    transition: .5s ease;
+    font-size: 2.2rem;
+    transition: .35s ease;
 }
 
 .services-box:hover h3 {
@@ -454,8 +456,41 @@ span {
 }
 
 .services-box p {
-    font-size: 1.6rem;
-    margin: 1rem 0 3rem;
+    font-size: 1.5rem;
+    margin: 1rem 0 1.4rem;
+}
+
+/* push the action button to the bottom so all cards align */
+.services-box .btn {
+    margin-top: auto;
+}
+
+.services-box .skillLogoContainer,
+.services-box .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem .8rem;
+    justify-content: center;
+    margin: 1.2rem 0 1.8rem;
+}
+
+.skill-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--white-color);
+    padding: .5rem .9rem;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    border: .1rem solid rgba(255, 255, 255, 0.04);
 }
 
 .portfolio {
@@ -1026,6 +1061,9 @@ img {
     padding: 4rem 7% 2rem;
     background: transparent;
 
+    position: relative;
+    overflow: hidden;
+    /* clip any pseudo-element spill */
 
 }
 
@@ -1120,10 +1158,11 @@ img {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(rgba(11, 6, 31, 0.6), rgba(11, 6, 31, 0.6));
+    background: linear-gradient(rgba(11, 6, 31, 0.5), rgba(11, 6, 31, 0.5));
     pointer-events: none;
     border-radius: 0;
-    z-index: 1;
+    z-index: 0;
+    /* keep overlay behind section content */
 }
 
 .dsa-container,
